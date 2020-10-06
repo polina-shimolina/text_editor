@@ -19,11 +19,12 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Edit">
-                <MenuItem Header="Copy" Click="Copy_Click"></MenuItem>
-                <MenuItem Header="Paste" Click="Paste_Click"></MenuItem>
+                <MenuItem Header="Copy" InputGestureText="Ctrl+C" Click="Copy_Click"></MenuItem>
+                <MenuItem Header="Paste" InputGestureText="Ctrl+V" Click="Paste_Click"></MenuItem>
+                <MenuItem Header="Cut" InputGestureText="Ctrl+X" Click="Cut_Click"></MenuItem>
             </MenuItem>
         </Menu>
-        <TextBox x:Name="TextBox" HorizontalAlignment="Left" Height="397" Margin="0,21,0,-31" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="794"/>
+        <TextBox x:Name="TextBox" HorizontalAlignment="Left" Height="397" Margin="0,21,0,-31" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="794" Cursor="IBeam"/>
 
     </Grid>
 </Window>

@@ -39,30 +39,62 @@ namespace text_editor
             save.FileName = "text_file";
             save.DefaultExt = ".txt";
             save.Filter = "Text documents (.txt)|*.txt";
-            Nullable<bool> result = save.ShowDialog();
+            save.ShowDialog();
+            string filename = save.FileName;
+            
         }
 
         private void Copy_Click(object sender, RoutedEventArgs e)
         {
-            copytext = TextBox.Text;
+            copytext = TextBox.SelectedText;
         }
 
         private void Paste_Click(object sender, RoutedEventArgs e)
         {
-            TextBox.Text = copytext;
+            TextBox.Text += copytext;
         }
 
         private void Open_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
             open.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-            Nullable<bool> result = open.ShowDialog();
+            open.ShowDialog();
             string filename = open.FileName;
+            TextBox.Text = System.IO.File.ReadAllText(filename);
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-            TextBox.Text = "";
+            string text = "Do you want to save file?";
+            MessageBoxButton button = MessageBoxButton.YesNoCancel;
+            string caption = "Save changes";
+            MessageBoxImage icon = MessageBoxImage.Warning;
+            MessageBoxResult result = MessageBox.Show(text, caption, button, icon);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    {
+                        SaveFileDialog save = new SaveFileDialog();
+                        save.FileName = "text_file";
+                        save.DefaultExt = ".txt";
+                        save.Filter = "Text documents (.txt)|*.txt";
+                        save.ShowDialog();
+                    }
+                    break;
+                case MessageBoxResult.No:
+                    TextBox.Text = "";
+                    break;
+                case MessageBoxResult.Cancel:
+                    break;
+            }
+
+            
+        }
+
+        private void Cut_Click(object sender, RoutedEventArgs e)
+        {
+            copytext = TextBox.SelectedText;
+            TextBox.SelectedText = "";
         }
     }
 }
