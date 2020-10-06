@@ -5,9 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:text_editor"
         mc:Ignorable="d"
-        Title="Text Editor" Height="417.2" Width="800">
-    <Grid Margin="0,0,-0.4,33">
-        <Menu HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="794" Margin="0,0,-0.4,0">
+        Title="Text Editor" Height="478.4" Width="934.4">
+    <Grid Margin="0,0,0,1.8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="142*"/>
+        </Grid.RowDefinitions>
+        <Menu HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="794" Grid.Row="0" Grid.RowSpan="2">
             <MenuItem Header="File">
                 <MenuItem x:Name="Save" Header="Save" Click="Save_Click">
                 </MenuItem>
@@ -19,12 +27,12 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Edit">
-                <MenuItem Header="Copy" InputGestureText="Ctrl+C" Click="Copy_Click"></MenuItem>
-                <MenuItem Header="Paste" InputGestureText="Ctrl+V" Click="Paste_Click"></MenuItem>
-                <MenuItem Header="Cut" InputGestureText="Ctrl+X" Click="Cut_Click"></MenuItem>
+                <MenuItem Header="Copy" Click="Copy_Click"></MenuItem>
+                <MenuItem Header="Paste" Click="Paste_Click"></MenuItem>
+                <MenuItem Header="Cut" Click="Cut_Click"></MenuItem>
             </MenuItem>
         </Menu>
-        <TextBox x:Name="TextBox" HorizontalAlignment="Left" Height="397" Margin="0,21,0,-31" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="794" Cursor="IBeam"/>
+        <TextBox x:Name="TextBox" HorizontalAlignment="Left" Height="416" Margin="0,0.2,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="918" Cursor="IBeam" Grid.Row="1" />
 
     </Grid>
 </Window>

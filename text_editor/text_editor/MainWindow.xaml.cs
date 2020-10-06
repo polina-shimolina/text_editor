@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace text_editor
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public string copytext;
@@ -35,13 +32,13 @@ namespace text_editor
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog save = new SaveFileDialog();
-            save.FileName = "text_file";
-            save.DefaultExt = ".txt";
-            save.Filter = "Text documents (.txt)|*.txt";
-            save.ShowDialog();
-            string filename = save.FileName;
-            
+            SaveFileDialog save = new Microsoft.Win32.SaveFileDialog();
+            save.FileName = "text_file"; 
+            save.DefaultExt = ".txt"; 
+            save.Filter = "Text documents (.txt)|*.txt"; 
+            Nullable<bool> res = save.ShowDialog();
+                string filename = save.FileName;
+            System.IO.File.WriteAllText(filename, TextBox.Text);
         }
 
         private void Copy_Click(object sender, RoutedEventArgs e)
@@ -74,11 +71,13 @@ namespace text_editor
             {
                 case MessageBoxResult.Yes:
                     {
-                        SaveFileDialog save = new SaveFileDialog();
+                        SaveFileDialog save = new Microsoft.Win32.SaveFileDialog();
                         save.FileName = "text_file";
                         save.DefaultExt = ".txt";
                         save.Filter = "Text documents (.txt)|*.txt";
-                        save.ShowDialog();
+                        Nullable<bool> res = save.ShowDialog();
+                        string filename = save.FileName;
+                        System.IO.File.WriteAllText(filename, TextBox.Text);
                     }
                     break;
                 case MessageBoxResult.No:
